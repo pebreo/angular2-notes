@@ -1,15 +1,15 @@
 Angular 2 vs. Angular1
 ---------------------
 
-COMPON
--------
-#### A component as directive+controller
+COMPONENTS VS DIRECTIVES and CONTROLLERS
+----------------------------------------
+#### A component replaces directives & controllers
 In Angular 2, a component has the functionality of an Angular 1
 directive and controller.
 
 In Angular 2, **controllers and $scope** are gone.
-```
-////Angular 1.x using Controller and $scope.........
+```javascript
+////Angular 1.x using Controller and $scope
 var myApp = angular
  .module("myModule", []) 
  .controller("productController", function($scope) {
@@ -17,7 +17,7 @@ var myApp = angular
     $scope.products = prods;
 });
  
-///Angular 2 Components using TypeScript........
+///Angular 2 Components using TypeScript
 import { Component } from ‘angular2/core’;
 @Component({
  selector: ‘prodsdata’,
