@@ -5,14 +5,20 @@ USING A FACTORY
 ---------------
 #### Usage
 ```javscript
-var json_date_now = (new Date()).toJSON();
+// get
+API.$get("", {
+    success: function (data) {
+        $log.log(data.results[0]);
+    }
+});
 
+// post
+var json_date_now = (new Date()).toJSON();
 var saveData = {
     'entry': $scope.entry,
     'goal_words': 200,
     'achieved_goal': $scope.achieved_goal,
 };
-
 API.$post("", saveData, {success: successFunction});
 ```
 
