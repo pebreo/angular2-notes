@@ -3,6 +3,21 @@ OVERVIEW
 
 USING A FACTORY
 ---------------
+#### Django REST Framework serializer
+This is what the `serializer.py` looks like on the Django REST Framework-based
+backend. All the items in `fields` are required to be posted. 
+Depending on the field requirements set in `models.py` they can be blank or not.
+```python
+# serializer.py
+from journal.models import Entry
+from rest_framework import serializers
+
+class EntrySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Entry
+        fields = ('pk','entry', 'achieved_goal','created')
+```
+
 #### Usage
 ```javscript
 // get
@@ -96,7 +111,7 @@ app.service("EventData", ["API", "$http", "$cookies", function (API, $http, $coo
 }]);
 ```
 
-#### Use the service 
+#### Using the service 
 ```javascript
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
