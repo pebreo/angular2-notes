@@ -4,11 +4,12 @@ Plunker link:
 
 http://plnkr.co/edit/XR1tyelmDhe8uu8ia6pE?p=preview
 
+
+#### The HTML
 Some notes about the html code:
 * the `<parent>` tag is taking in the `<child>` tag so it must have a `transclude` defined 
 in the component definition
 * the `name` property must be defined in `bindings` in the component definition
-#### The HTML
 ```html
 <!DOCTYPE html>
 <html ng-app="plunker">
