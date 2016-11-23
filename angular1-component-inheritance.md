@@ -10,6 +10,7 @@ Some notes about the html code:
 * the `<parent>` tag is taking in the `<child>` tag so it must have a `transclude` defined 
 in the component definition
 * the `name` property must be defined in `bindings` in the component definition
+* In the parent template, you **must** place `<ng-transclude></ng-transclude>` either before or after that component's html
 ```html
 <!DOCTYPE html>
 <html ng-app="plunker">
@@ -35,7 +36,7 @@ Here are some notes about the following code:
 * `transclude` means the tag `<parent-component>` will accept whatever inside the html tag 
 e.g. `<foo> something </foo>` - here, `something` is being processed by the component `foo`
 * use `require` to enable `child` to access the properties of `parentComponent`
-* the tick mark ^ in front of the component string means that `child` can access the parent and it's controller
+* the tick mark ^ in front of the component string means that `child` can access the parent and its controller
 ```javascript
 var app = angular.module('plunker', []);
 app.component('parentComponent', {
