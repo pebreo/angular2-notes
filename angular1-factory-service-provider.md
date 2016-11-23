@@ -1,7 +1,11 @@
-
-A factory returns an object.
-A service is already instatiated - you have to add properties to `this`.
-A provider is the only service that can be passed into `config()`
+Services vs. Factories vs. Providers
+-------------------------------------
+It's important to understand the similarities and differences of services, factories, and providers.
+All three types of "helpers" make it easier for the developer to stay DRY.
+The differences are not difficult to understand:
+* A service is already instatiated - you have to add properties to `this`.
+* A factory returns an object.
+* A provider is the only service that can be passed into `config()`
 
 
 #### Factory example
