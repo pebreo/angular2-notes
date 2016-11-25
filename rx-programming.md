@@ -1,4 +1,25 @@
 
+Problem: your UI hangs while you are fetching or calculating some data
+Use: callbacks to become asynchronous
+
+Problem: you don't want to get into callback hell
+Solution: use promises
+http://callbackhell.com/
+
+Problem: you have too many inputs and outputs and hard to keep track of it
+Solution: use asynchronous event streams (observables) and functional programming style
+Solution: use push and pull pattern to define the inputs and outputs, and also functional style of programming 
+to make it easier to understand and to test
+
+Problems: you want to return the results not a function
+Solution: use flatMap
+
+Problem: you want to run two streams and get a single output
+Solution: use merge
+
+Problem: you want to convert a promise to an observable
+Solution: use fromPromise in RxJs
+
 Glossary
 -------
 * `reactive programming`
@@ -12,10 +33,15 @@ Glossary
 * `asynchronous`
 * `error`
 * `event`
-* `event stream`
+
 * `marble diagram`
-* `stream`
-* `promise` (see angular promise)  - fromPromise
+* `stream` - multiple streams can used as input to other streams
+* `event stream`
+* `promise` (see angular promise)  - fromPromise (convert a promise to observable)
+A Promise is simply an Observable with one single emitted value. Rx streams go beyond promises by allowing many returned values.
+promise example: http://stackoverflow.com/questions/24517778/javascript-promises-sample-in-js-fiddle-not-working
+Promise nuggets: http://promise-nuggets.github.io/articles/01-the-simplest-example.html
+
 * `callback` (see examples)
 
 * `merge`
@@ -26,7 +52,9 @@ Glossary
 * BaconJS
 
 Fundamentals
-* function
+* functional programming (map, filter, reduce/scan)
+* promises vs. observable
+* DOM 
 * attribute, property
 * return value
 * push pattern
