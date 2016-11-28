@@ -62,7 +62,7 @@ TEMPLATES
 <input ng-model="technology.name"></input>
  
 /////In Angular 2,two-way data binding using '[(ngModel)]'
-<input [(ngModel)]="http://technology.name"></input>
+<input [(ngModel)]="technology.name"></input>
 ```
 
 ### Events syntax
