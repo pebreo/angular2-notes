@@ -1,3 +1,8 @@
+Resources
+---------
+
+https://github.com/vuejs/Discussion/issues/202
+
 VueJS To-do
 -----------
 
