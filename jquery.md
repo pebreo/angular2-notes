@@ -45,3 +45,46 @@ $(document).ready(function () {
 });
  
 ```
+
+CUSTOM EVENTS
+-------------
+```javascript
+// create the event
+myevent = {
+    "newMessage",
+    {
+        // detail contains custom information
+        detail: { 
+            message: "This is my event!",
+            time: new Date()
+        },
+            bubbles: true, // bubbles to the ancestors if event is fired
+            cancel: true
+    }
+};
+
+// dispatch to a specific element (it could be the whole document)
+document.getElementById("msgbox").dispatchEvent(myevent)
+
+// add one or more handlers to the event
+document.addEventListener("newMessage", newMessageHandler, false);
+
+
+
+
+```
+
+
+```
+document.getElementById("msgbox").addEventListener("submit", function(e) {
+    e.preventDefault();
+    var msg = e.currentTarget.getElementById("msg").value.trim();
+    if (msg) {
+        alert(msg);
+    }
+}, false);
+
+// jquery equivalent
+
+$("#msgbox").on("submit", function(){...})
+```
