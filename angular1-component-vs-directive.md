@@ -102,7 +102,7 @@ and a `state provider` also named **movie** (they are in different namespaces).
 
 When the `/movie/:id` route is called, then the state provider
 will call the `MovieService` and return a promise to the
-`data` parameter of the movie component through the `$resolve` property.
+**data** parameter of the movie component through the `$resolve` property.
 Note that we assume that `MovieService` returns a promise which is best practice.
 
 In the template, we use the `<my-directive></my-directive>` syntax for our **movie** component.
