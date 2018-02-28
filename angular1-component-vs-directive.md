@@ -101,3 +101,31 @@ Note that the default controller name for a component is `$ctrl`.
     };
 });
 ```
+
+### Example movie information component
+We can use a component definition to pass through information to a template
+which will be a small part of a larger web page.
+```
+// movie.component.js
+.component('counter', function counter(){
+    bindings: {
+        movie: '=data'      
+    },
+    templateUrl: 'js/movie/movie.html'
+});
+
+// movie.html
+<div class="row">
+    <div class="col-md-3">
+        <img class="poster" ng-src="{{$ctrl.movie.poster}}">
+    </div>
+    
+    <div class="col-md-6">
+        <div class="details">
+            <h2> {{ $ctrl.movie.title }} <span>{{ $ctrl.movie.release_year }}</span> </h2>
+        </div>
+       
+    </div>
+
+</div>
+```
