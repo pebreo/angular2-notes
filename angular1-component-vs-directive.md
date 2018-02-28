@@ -5,75 +5,7 @@ Starting with Angular 1.5.x you can used components definition instead of direct
 
 ## Directive approach
 ```javascript
-.directive('counter', function counter(){
-    return {
-      scope: {},
-      bindToController: {
-          count: '='
-      },
-      controller: function() {
-          function increment() {
-              this.count++;
-          }
-          function decrement() {
-              this.count--;
-          }
-          this.increment = increment;
-          this.decrement = decrement;
-      },
-      controllerAs: 'counter'
-    };
-});
-```
 
-## Component approach
-```javascript
-.component('counter', function counter(){
-    bindings: {
-        count: '='
-    },
-    controller: function(){
-        function increment() {
-            this.count++;
-        }
-        function decrement() {
-            this.count--;
-        }
-        this.increment = increment;
-        this.decrement = decrement;
-    }
-});
-```
-
-
-## Example component
-Note that the default controller name for a component is `$ctrl`.
-```javascript
-// The component approach
-.component('counter', function counter(){
-    bindings: {
-        count: '='      
-    },
-    controller: function(){
-        function increment() {
-            this.count++;
-        }
-        function decrement() {
-            this.count--;
-        }
-        this.increment = increment;
-        this.decrement = decrement;
-    },
-    template: `
-        <div class="todo">
-            <input type="text" ng-model="$ctrl.count">
-            <button type="button" ng-click="$ctrl.increment()">+<button>
-            <button type="button" ng-click="$ctrl.decrement()">-</button>
-        </div>
-    `
-});
-
-// The directive approach
 .directive('counter', function counter(){
     return {
       scope: {},
@@ -101,6 +33,36 @@ Note that the default controller name for a component is `$ctrl`.
     };
 });
 ```
+
+## Component approach
+
+Note that the default controller name for a component is `$ctrl`.
+```javascript
+// The component approach
+.component('counter', function counter(){
+    bindings: {
+        count: '='      
+    },
+    controller: function(){
+        function increment() {
+            this.count++;
+        }
+        function decrement() {
+            this.count--;
+        }
+        this.increment = increment;
+        this.decrement = decrement;
+    },
+    template: `
+        <div class="todo">
+            <input type="text" ng-model="$ctrl.count">
+            <button type="button" ng-click="$ctrl.increment()">+<button>
+            <button type="button" ng-click="$ctrl.decrement()">-</button>
+        </div>
+    `
+});
+```
+
 
 ### Example movie information component
 We can use a component definition to pass through information to a template
@@ -142,12 +104,15 @@ When the `/movie/:id` route is called, then the state provider
 will call the `MovieService` and return a promise to the
 `data` parameter of the movie component through the `$resolve` property.
 Note that we assume that `MovieService` returns a promise which is best practice.
+
+In the template, we use `<my-directive></my-directive>` syntax for our **movie** component.
+So, in this case, our `component` is declared as `<movie></movie>`
 ```javascript
 app.component('movie', function counter(){
     bindings: {
         movie: '=data'      
     },
-    controller: // blah
+    controller: // ... 
     template: `
       {{ $ctrl.movie.name }}
     `
@@ -155,14 +120,18 @@ app.component('movie', function counter(){
 
 app.config(function($stateProvider) {
     $stateProvider.state('movie', {
+        // the url that is being called by the user or the program
         url: '/movie/:id',
-        // call the movie component and 
+
+        // declare the movie component (like you would declare a directive and 
         //  pass the resolve promise contained in movie{} object
         template: '<movie data="$resolve.movie"></movie>',
         
+        // the $resolve property
         resolve: {
             // the movie object 
             movie: function(MovieService, $stateParams){
+                // we assume thet MovieService follows best practice and returns a promise
                 return MovieService.findMovieId($stateParams.id);
             }
         }
