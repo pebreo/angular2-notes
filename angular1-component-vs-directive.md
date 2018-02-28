@@ -133,3 +133,12 @@ which will be a small part of a larger web page.
 
 </div>
 ```
+
+## Passing data to the movie component
+We can use the component defined above by passing data through it.
+In the example below, the `$resolve` is a servie 
+```
+```
+
+source: 
+https://odetocode.com/blogs/scott/archive/2014/05/20/using-resolve-in-angularjs-routes.aspx
