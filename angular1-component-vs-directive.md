@@ -123,8 +123,12 @@ which will be a small part of a larger web page.
     <div class="col-md-6">
         <div class="details">
             <h2> {{ $ctrl.movie.title }} <span>{{ $ctrl.movie.release_year }}</span> </h2>
+            <div class="meta">
+                {{ $ctrl.movie.rating }} | {{$ctrl.movie.duration}}
+            </div>
+            <p>{{ $ctrl.movie.overview }}</p>
         </div>
-       
+        
     </div>
 
 </div>
