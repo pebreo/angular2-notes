@@ -108,7 +108,7 @@ Note that we assume that `MovieService` returns a promise which is best practice
 In the template, we use the `<my-directive></my-directive>` syntax for our **movie** component.
 We use the same template syntax because the component basically replaces directives.
 So, in this case, our `component` is declared as `<movie></movie>` and notice
-that **data** is our custom parameter name set in the `bindings` property in the component definition.
+that **data** is our custom parameter name which was set in the `bindings` property in the component definition.
 
 ```javascript
 app.component('movie', function counter(){
