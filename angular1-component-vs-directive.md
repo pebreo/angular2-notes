@@ -135,9 +135,39 @@ which will be a small part of a larger web page.
 ```
 
 ## Passing data to the movie component
-We can use the component defined above by passing data through it.
-In the example below, the `$resolve` is a servie 
+In the example below, we we have a `component` named `movie`
+and a state provider also named `movie`.
+
+When the `/movie/:id` route is called then the state provider
+will call the `MovieService` and return a promise to the
+`data` parameter of the movie component through the `$resolve` property.
+Note that we assume that `MovieService` returns a promise which is best practice.
 ```
+app.component('movie', function counter(){
+    bindings: {
+        movie: '=data'      
+    },
+    controller: // blah
+    template: `
+      {{ $ctrl.movie.name }}
+    `
+});
+
+app.config(function($stateProvider) {
+    $stateProvider.state('movie', {
+        url: '/movie/:id',
+        // call the movie component and 
+        //  pass the resolve promise contained in movie{} object
+        template: '<movie data="$resolve.movie"></movie>',
+        
+        resolve: {
+            // the movie object 
+            movie: function(MovieService, $stateParams){
+                return MovieService.findMovieId($stateParams.id);
+            }
+        }
+    });
+});
 ```
 
 source: 
