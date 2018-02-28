@@ -135,14 +135,14 @@ which will be a small part of a larger web page.
 ```
 
 ## Passing data to the movie component
-In the example below, we we have a `component` named `movie`
-and a state provider also named `movie`.
+In the example below, we we have a `component` named **movie**
+and a `state provider` also named **movie**.
 
-When the `/movie/:id` route is called then the state provider
+When the `/movie/:id` route is called, then the state provider
 will call the `MovieService` and return a promise to the
 `data` parameter of the movie component through the `$resolve` property.
 Note that we assume that `MovieService` returns a promise which is best practice.
-```
+```javascript
 app.component('movie', function counter(){
     bindings: {
         movie: '=data'      
