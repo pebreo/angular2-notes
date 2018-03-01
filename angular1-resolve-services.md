@@ -89,5 +89,5 @@ app.controller("newsController",function($scope, initialData){
 ```
 
 
-
+source:
 https://odetocode.com/blogs/scott/archive/2014/05/20/using-resolve-in-angularjs-routes.aspx
