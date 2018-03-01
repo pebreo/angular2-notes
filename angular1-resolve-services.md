@@ -1,6 +1,14 @@
 # Simple greeting service
-### the service
+### the services
 ```javascript
+app.factory("messageService", function($q){
+    return {
+        getMessage: function(){
+            return $q.when("Hello World!");
+        }
+    };
+});
+
 app.factory("greetingService", function($q, $timeout){
   return {
     getGreeting: function(){
@@ -35,6 +43,36 @@ app.controller("newsController", function($scope, message, greeting){
   $scope.message = message;
   $scope.greeting = greeting;
 });
+```
+
+# Combining promises from different services
+### service
+```javascript
+app.factory("newsControllerInitialData", function(){
+  return function(){
+      // assign the two promises
+      var message = ;
+      var greeting = ;
+      
+      // only resolve and combine the two promises 
+      //   using the `$q.all()` function
+      return $q.all([message, greeting]).then(function(results){
+        
+        return {
+            message: results[0];
+            greeting: results[1];
+        }
+      })
+  }
+});
+### state provider
+```javascript
+```
+
+### controller
+```javascript
+```
+
 ```
 
 
