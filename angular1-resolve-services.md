@@ -65,6 +65,8 @@ app.factory("newsControllerInitialData", function(messageService, greetingServic
       })
   }
 });
+```
+
 ### state provider
 ```javascript
 .when("/news", {
