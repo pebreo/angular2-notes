@@ -142,7 +142,10 @@ app.config(function($stateProvider) {
 });
 ```
 
+# Controllers and Components communication
+use: https://tuhrig.de/reusable-angularjs-form-components/
+
 source: 
 https://www.youtube.com/watch?v=POWFmH-QfTQ&t=481s
 https://odetocode.com/blogs/scott/archive/2014/05/20/using-resolve-in-angularjs-routes.aspx
-https://tuhrig.de/reusable-angularjs-form-components/
+
