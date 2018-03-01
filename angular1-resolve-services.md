@@ -34,7 +34,7 @@ app.factory("greetingService", function($q, $timeout){
           return greetingService.getGreeting();
       }
   }
-})
+});
 ```
 
 ### the controller for `/news` state
@@ -48,11 +48,11 @@ app.controller("newsController", function($scope, message, greeting){
 # Combining promises from different services
 ### service
 ```javascript
-app.factory("newsControllerInitialData", function(){
+app.factory("newsControllerInitialData", function(messageService, greetingService, $q){
   return function(){
       // assign the two promises
-      var message = ;
-      var greeting = ;
+      var message = messageService.getMessage();
+      var greeting = greetingService.getGreeting();
       
       // only resolve and combine the two promises 
       //   using the `$q.all()` function
@@ -67,13 +67,25 @@ app.factory("newsControllerInitialData", function(){
 });
 ### state provider
 ```javascript
+.when("/news", {
+  templateUrl: "newsView.html",
+  controller: "newsController",
+  resolve: {
+     initialData: function(newsControllerInitialData) {
+            return newsControllerInitialData();
+     }
+  }
+});
 ```
 
 ### controller
 ```javascript
+app.controller("newsController",function($scope, initialData){
+    $scope.message = initialData.message;
+    $scope.greeting= initialData.greeting;
+});
 ```
 
-```
 
 
 https://odetocode.com/blogs/scott/archive/2014/05/20/using-resolve-in-angularjs-routes.aspx
