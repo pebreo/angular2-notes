@@ -80,7 +80,7 @@ app.factory("newsControllerInitialData", function(messageService, greetingServic
 });
 ```
 
-### controller
+### controller for the `/news` state
 ```javascript
 app.controller("newsController",function($scope, initialData){
     $scope.message = initialData.message;
