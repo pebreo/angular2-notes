@@ -77,7 +77,7 @@ angular.module('app.game').directive('gameCanvas', function($window, $injector){
 ```
 
 
-### `main.js` - the Phaser game that will control a canvas
+### `main.js` - the Phaser game that will control a HTML5 canvas
 This code in is imported to the `app.game` directive using the `require` syntax.
 Note that the code has to be as a `(function(){})` in a `module.exports` object
 in order to by imported using the `require` syntax.
