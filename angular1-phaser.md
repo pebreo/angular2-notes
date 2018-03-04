@@ -160,5 +160,11 @@ gulp
 
 
 source:
+
 Ari Lerner - "Building games with AngularJS"
+
 https://www.youtube.com/watch?v=8giyBgNhfkU
+
+code:
+
+https://github.com/fullstackio/ng-game/tree/master/client/src/scripts/game
