@@ -1,4 +1,14 @@
+# AngularJS + Phaser
+If you want to control a Phaser-based game using AngularJS, you have
+to use a directive and then pass in the `scope` as well as the `$injector`.
 
+The `scope` allows you to send information to the Phaser game 
+We use `scope.$on()` to send from Angular to Phaser ("top to bottom")
+and we use `scope.$emit()` that goes from Phaser to Angular ("bottom to top").
+
+The process is easier if you use the CommonJS syntax of `require` to make your 
+code more readable and easier to debug. However, you will need to use 
+Gulp which is a transpiling tool (among others things) to be able to use `require` syntax.
 
 ### `index.html` - the webpage
 ```html
@@ -22,7 +32,7 @@
 </html>
 ```
 
-### `game.js` - 
+### `game.js` - the angular module that will control the canvas via a directive
 Note that we use `require()` syntax for convenience, but that also means
 that we need to use `gulp` to transpile our code.
 ```javascript
@@ -67,7 +77,7 @@ angular.module('app.game').directive('gameCanvas', function($window, $injector){
 ```
 
 
-### `main.js` - the phaser game
+### `main.js` - the Phaser game that will control a canvas
 This code in is imported to the `app.game` directive using the `require` syntax.
 Note that the code has to be as a `(function(){})` in a `module.exports` object
 in order to by imported using the `require` syntax.
