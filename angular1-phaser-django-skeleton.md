@@ -1,3 +1,10 @@
+# Skeleton to run a Angular+Phaser app on Django
+These snippets demonstrates how to run a Angular+Phaser
+game on Django. You'll notice that the Phaser code is in the `linkFn` in the `index.js`
+which defines a directive called `phaserCanvas`.
+
+For better organization, you'll probably want to use `require()` syntax
+to import code. To do that, you'lle have to use `gulp` and `browserify`.
 
 ### `urls.py`
 ```
@@ -35,7 +42,7 @@ urlpatterns +=  [
 </html>
 ```
 
-### `js/pong/main.js`
+### `static/js/pong/main.js`
 ```
 angular.module('app', [
   'ui.router',
@@ -55,7 +62,7 @@ angular.module('app', [
 ```
 
 
-### `/js/pong/game/index.js`
+### `static/js/pong/game/index.js`
 ```
 
 angular.module('app.game', ['ui.router'])
@@ -73,6 +80,7 @@ angular.module('app.game', ['ui.router'])
 .directive('phaserCanvas', function($window, $injector) {
 
   var linkFn = function(scope, ele, attrs) {
+      // Phaser code here
       var gameProperties = {
           screenWidth: 640,
           screenHeight: 480,
