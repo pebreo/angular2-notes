@@ -5,12 +5,14 @@
 ```
 
 ### `app.js` - 
-```javascript
+Note that we use `require()` syntax for convenience, but that also means
+that we need to use `gulp` to transpile our code.
+```
 // the app module
 angular.module('app', [
    'ui.router',
-    require('./menu').name,  // use the CommonJS require syntax (use Gulp to handle transpiling this syntax)
-    require('./game).name
+    require('./menu').name, 
+    require('./game').name,
 ]).config(function($urlRouterProvider){
     $urlRouterProvider.otherwise('/menu');
 })
