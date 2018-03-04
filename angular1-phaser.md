@@ -2,9 +2,27 @@
 
 ### `index.html` - the webpage
 ```html
+<html>
+   <head>
+   </head>
+   
+   <body ng-app='app'>
+         <div navbar></div>
+         <div overlay-bar></div>
+         <div class="content">
+               <!-- since we are using ui provider -->
+               <div ui-view></div>
+         </div>
+   </body>
+   
+   <script src='angular.js'></script>
+   <script src='angular-ui-router.js'></script>
+   <script src='phaser.js'></script>
+   <script src='game.js'></script>
+</html>
 ```
 
-### `app.js` - 
+### `game.js` - 
 Note that we use `require()` syntax for convenience, but that also means
 that we need to use `gulp` to transpile our code.
 ```javascript
@@ -131,3 +149,6 @@ gulp
 ```
 
 
+source:
+Ari Lerner - "Building games with AngularJS"
+https://www.youtube.com/watch?v=8giyBgNhfkU
