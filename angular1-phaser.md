@@ -2,7 +2,7 @@
 If you want to control a Phaser-based game using AngularJS, you have
 to use a directive and then pass in the `scope` as well as the `$injector`.
 
-The `scope` allows you to send information to the Phaser game 
+The `scope` allows communication between your Angular module and your Phaser code.
 We use `scope.$on()` to send from Angular to Phaser ("top to bottom")
 and we use `scope.$emit()` that goes from Phaser to Angular ("bottom to top").
 
