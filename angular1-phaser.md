@@ -76,6 +76,7 @@ module.exports = (function(scope, players, mapId, injector) {
 });
 ```
 
+
 ### gulpfile.js
 ```javascript
 var wrapCommonjs = require('gulp-wrap-commonjs');
@@ -85,6 +86,48 @@ gulp.task('commonjs', function(){
     .pipe(wrapCommonjs())
     .pipe(gulp.dest('build/'));
 });
+
+gulp.task('default', ['commonjs'], function () {
+  browserSync({
+    notify: false,
+    proxy: "127.0.0.1:8000"
+  });
+
+  gulp.watch(['web/**/*.html'], reload);
+  // gulp.watch(['web/static/styles/**/*.{scss,css}'], ['styles', reload]);
+  // gulp.watch(['web/static/scripts/**/*.js'], ['jshint']);
+  // gulp.watch(['web/static/scripts/**/*.coffee'], ['coffeelint']);
+  // gulp.watch(['web/static/scripts/**/*.{js,coffee}'], ['scripts', reload]);
+  // gulp.watch(['web/static/images/**/*'], reload);
+});
+```
+
+### package.json
+```
+{
+  "name": "gulpdemo",
+  "version": "1.0.0",
+  "description": "$ npm install -g gulp $ cd myproj $ npm install gulp --save-dev",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "browser-sync": "^2.3.1",
+    "gulp": "^3.8.11",
+    "gulp-plumber": "^1.0.0",
+    "gulp-uglify": "^1.1.0",
+    "gulp-wrap-commonjs": "^0.1.14"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+```
+
+### gulp usage
+```
+npm install -y gulp
+gulp 
 ```
 
 
