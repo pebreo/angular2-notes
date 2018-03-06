@@ -1,4 +1,13 @@
 
+## App creation checklist
+
+* Create `NAME.webpack.config.js`
+* Create `js/NAME/index.js`
+* Create `bundle/js/NAME/`
+* Edit `settings.py`
+* Edit `templates/NAME/index.html`
+* Edit webpack and substitute name
+
 ## INSTALLATION
 ```
 # if you don't have node 9.x
