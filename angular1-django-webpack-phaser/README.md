@@ -25,3 +25,15 @@ pip install django-webpack-loader
 # watch
 ./node_modules/.bin/webpack --config NAME.webpack.config.js --watch
 ```
+
+## Sources / inspired by
+
+http://www.zekechan.net/getting-started-html5-game-development-pong2/
+
+https://github.com/fullstackio/ng-game
+
+https://github.com/ezhome/django-webpack-loader
+
+Talk about Angular+Phaser
+
+https://www.youtube.com/watch?v=8giyBgNhfkU&t=1005s
