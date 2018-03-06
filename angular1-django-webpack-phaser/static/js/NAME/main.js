@@ -1,5 +1,4 @@
 
-
 angular.module('app',[
     'ui.router',
     require('./game').name
