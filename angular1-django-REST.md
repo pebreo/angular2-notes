@@ -7,10 +7,38 @@ djangorestframework==3.5.4
 djangorestframework-jwt==1.11.0
 ```
 
-## Test using curl
+
+## Test the REST API with Curl
 ```
-# login
- curl -X POST -d "email=admin@foo.com&password=abc123" http://localhost:8000/api/auth/token/
+curl -X POST -d "username=cfe&password=learncode" http://127.0.0.1:8000/api/auth/token/
+
+abc123
+
+curl -H "Authorization: JWT abc123" http://127.0.0.1:8000/api/comments/
+
+curl -X POST -H "Authorization: JWT abc123" -H "Content-Type: application/json" -d '{"content":"some reply to another try"}' 'http://127.0.0.1:8000/api/comments/create/?slug=new-title&type=post&parent_id=13'
+
+curl http://127.0.0.1:8000/api/comments/
+
+
+
+curl -X POST -d "username=anotheruser123&password=anotheruser123" http://127.0.0.1:8000/api/auth/token/
+
+abc123
+
+curl -X POST -H "Authorization: JWT abc123" -H "Content-Type: application/json" -d '{"content":"my new reply to another try"}' 'http://127.0.0.1:8000/api/comments/create/?slug=new-title&type=post&parent_id=13'
+
+```
+
+## Test the REST API using HTTPIE
+```
+http -f POST http://127.0.0.1:8000/api/auth/token/ username=cfe password=learncode
+
+http GET "Authorization: JWT abc123" http://127.0.0.1:8000/api/comments/
+
+
+
+
 ```
 
 
