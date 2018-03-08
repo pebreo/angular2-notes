@@ -1,5 +1,5 @@
-var StateMain = function(game) {
-}
+var StateMain = (function(game) {
+});
 
 StateMain.prototype = {
     preload: function () {
