@@ -1,10 +1,10 @@
 
-
 angular.module('app.game')
 .directive('phaserCanvas', ['$window','$injector', function($window, $injector) {
 
-  var linkFn = require('./game_logic');
-
+  var linkFn = function(scope, ele, attrs ){
+      require('./game_logic')(scope, ele, attrs);
+  };
   return {
     scope: {
       ngModel: '=',
@@ -19,4 +19,3 @@ angular.module('app.game')
 
 
 ]);
-

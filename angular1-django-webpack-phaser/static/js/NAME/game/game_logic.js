@@ -1,4 +1,4 @@
-module.exports = function(scope, ele, attrs) {
+module.exports = (function(scope, ele, attrs) {
     var gameProperties = {
         screenWidth: 640,
         screenHeight: 480,
@@ -7,7 +7,13 @@ module.exports = function(scope, ele, attrs) {
 
         paddleLeft_x: 50,
         paddleRight_x: 590,
+
+        ballVelocity: 500,
+        ballRandomStartingAngleLeft: [-120, 120],
+        ballRandomStartingAngleRight: [-60, 60],
+        ballStartDelay: 2,
     };
+
 
     var graphicAssets = {
         ballURL: assets_url + 'images/ball.png',
@@ -31,12 +37,13 @@ module.exports = function(scope, ele, attrs) {
         oggURL: '.ogg'
     };
 
+
     var mainState = function(game) {
         this.backgroundGraphics;
         this.ballSprite;
         this.paddleLeftSprite;
         this.paddleRightSprite;
-    };
+    }
 
     mainState.prototype = {
         preload: function () {
@@ -50,6 +57,8 @@ module.exports = function(scope, ele, attrs) {
 
         create: function () {
             this.initGraphics();
+            this.initPhysics();
+            this.startDemo();
         },
 
         update: function () {
@@ -74,9 +83,34 @@ module.exports = function(scope, ele, attrs) {
             this.paddleRightSprite = game.add.sprite(gameProperties.paddleRight_x, game.world.centerY, graphicAssets.paddleName);
             this.paddleRightSprite.anchor.set(0.5, 0.5);
         },
+
+        initPhysics: function () {
+            game.physics.startSystem(Phaser.Physics.ARCADE);
+            game.physics.enable(this.ballSprite, Phaser.Physics.ARCADE);
+
+            this.ballSprite.checkWorldBounds = true;
+            this.ballSprite.body.collideWorldBounds = true;
+            this.ballSprite.body.immovable = true;
+            this.ballSprite.body.bounce.set(1);
+        },
+
+        startDemo: function () {
+            this.ballSprite.visible = false;
+            game.time.events.add(Phaser.Timer.SECOND * gameProperties.ballStartDelay, this.startBall, this);
+        },
+
+        startBall: function () {
+            this.ballSprite.visible = true;
+
+            var randomAngle = game.rnd.pick(gameProperties.ballRandomStartingAngleRight.concat(gameProperties.ballRandomStartingAngleLeft));
+
+            game.physics.arcade.velocityFromAngle(randomAngle, gameProperties.ballVelocity, this.ballSprite.body.velocity);
+        },
     };
 
-    var game = new Phaser.Game(gameProperties.screenWidth, gameProperties.screenHeight, Phaser.AUTO, 'gameDiv');
+
+
+    var game = new Phaser.Game(gameProperties.screenWidth, gameProperties.screenHeight, Phaser.AUTO, 'game-canvas');
     game.state.add('main', mainState);
     game.state.start('main');
-};
+});
