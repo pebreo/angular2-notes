@@ -35,6 +35,31 @@ pip install django-webpack-loader
 ./node_modules/.bin/webpack --config NAME.webpack.config.js --watch
 ```
 
+## How AngularJS inserts the Phaser canvas
+
+The `game` state has a certain template which defines a
+div of `phaser-canvas` which coincides with the directive `phaserCanvas`. 
+By angularjs convention, `phaserCanvas` directive is attached to the
+element defined as `<div phaser-canvas></div>`  or `<phaser-canvas></phaser-canvas>`.
+
+The `phaserCanvas` directive then inserts content to the `<dive phaser-canvas>`
+element which is defined in it's own template definition. In this project's
+case, we define the contents of the directive to be `<div id="game-canvas"></div>`
+which the `new Phaser()` declaration will attach it's own `<cnavas>` element.
+
+So basically it will look like this:
+```html
+<!-- inserted element by ui-router and attached to phaserCanvas directive -->
+<div phaser-canvas>   
+   <!-- inserted by phaserCanvas directive -->
+  <div id="game-canvas">
+     <!--  attached as child by phaser -->
+     <canvas>
+     </canvas>
+  </div>
+</div>
+```
+
 ## Sources / inspired by
 
 http://www.zekechan.net/getting-started-html5-game-development-pong2/
