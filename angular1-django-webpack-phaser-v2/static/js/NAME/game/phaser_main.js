@@ -38,7 +38,7 @@ module.exports = (function(scope, ele, attrs, window_width, window_height) {
     };
 
 
-    var StateMain = require('./states/StateMain.js')(game);
+    var StateMain = require('./states/StateMain.js');
 
     console.log(window_width);
     // desktop+laptop
