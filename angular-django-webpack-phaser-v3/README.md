@@ -60,6 +60,15 @@ So basically it will look like this:
 </div>
 ```
 
+## Communicating between Phaser and Angular using `scope.$on` and `scope.$emit`
+```
+
+```
+In the controller or service
+```
+```
+
+
 ## State snippet
 ```
 var StateNAME = (function(game) {
