@@ -4,3 +4,4 @@
 * handle desktop and mobile screens
 * add documentation about `$on` and `$emit`
 * add title state
+* add game images
