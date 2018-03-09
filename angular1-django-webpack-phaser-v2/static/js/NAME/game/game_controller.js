@@ -1,13 +1,12 @@
 angular.module('app.game')
-.controller('GameController',["$scope","$stateParams", "$window",  function($scope, $stateParams, $window) {
-  $scope.players = [];
-  $scope.mapId = $stateParams.id || '1';
+.controller('GameController',["$scope","$stateParams", "$window", "$rootScope",  function($scope, $stateParams, $window, $rootScope) {
+
 
   $scope.window_width = $window.innerWidth;
   $scope.window_height = $window.innerHeight;
 
-  $scope.$on('game:getAvailablePlayers', function(players) {
-    $scope.players = players;
+  $rootScope.$on('game:mainStateLoad', function(evt, data) {
+    console.log('mainState loaded');
   });
 
   $scope.$on('$destroy', function() {

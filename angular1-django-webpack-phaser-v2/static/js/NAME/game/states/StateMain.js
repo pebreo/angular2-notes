@@ -4,6 +4,7 @@ var StateMain = (function(game) {
 StateMain.prototype = {
     preload: function () {
         // this.game.load.image("logo",assets_url + "images/title/gameLogo.png");
+        this.game.scope.$emit('game:mainLoad', {});
     },
 
     create: function () {

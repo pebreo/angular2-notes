@@ -49,7 +49,9 @@ module.exports = (function(scope, ele, attrs, window_width, window_height) {
         // mobile
         var game = new Phaser.Game(window_width, window_height, Phaser.AUTO, 'game-canvas');
     }
-
+    
+    game.scope = scope;
+    game.state.add('main', StateMain);
 
     // Turn off music
      scope.$on('game:toggleMusic', function() {
@@ -64,8 +66,7 @@ module.exports = (function(scope, ele, attrs, window_width, window_height) {
       // });
       game.destroy();
     });
-    // mobile
-    // var game = new Phaser.Game(.screenWidth, gameProperties.screenHeight, Phaser.AUTO, 'game-canvas');
-    game.state.add('main', StateMain);
+  
+    
     game.state.start('main');
 });
