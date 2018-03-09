@@ -60,12 +60,45 @@ So basically it will look like this:
 </div>
 ```
 
-## Communicating between Phaser and Angular using `scope.$on` and `scope.$emit`
+## Communicating between Phaser and Angular using `scope.$on`, `scope.$emit`, and
+`$broadcast`.
+When you want to send information to Phaser from Angular you would do something like this:
+```javascript
+// in angular
+angular.module('app.overlay')
+.controller('OverlayController', function($rootScope, $scope, players, feed) {
+  var ctrl = this;
+
+  ctrl.turnOffMusic = function() {
+    $rootScope.$broadcast('game:toggleMusic');
+  };
+
+});
+
+
+// in phaser
+ scope.$on('game:toggleMusic', function() {
+   StateMain.toggleMusic()
+ });
 ```
 
-```
-In the controller or service
-```
+When you want to send information to Angular from Phaser you would do this
+```javascript
+// phaser
+this.game.scope.$emit('game:wrongWay', {});
+
+// angular
+
+angular.module('app.overlay')
+.controller('OverlayController', function($rootScope, $scope, players, feed) {
+  var ctrl = this;
+
+  $rootScope.$on('game:wrongWay', function(evt, data) {
+      console.log('wrong way');
+  });
+
+});
+
 ```
 
 
