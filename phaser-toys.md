@@ -141,6 +141,9 @@ function update() {
 ## Sprite+Text easing
 ```javascript
 
+//https://phaser.io/sandbox/edit/fJNaDdfO
+
+
 function addText() {
     text = game.add.text(game.world.centerX, game.world.centerY, "- phaser -");
     text.anchor.setTo(0.5);
@@ -185,6 +188,11 @@ function resetDude() {
     dude.body.x=game.world.width;
     dude.body.y=game.world.centerY-150;
 }
+function resetText() {
+    t = ['phaser','is','awesome','icecream','soda'];
+    rand_text = game.rnd.pick(t);
+    text.setText(rand_text);
+}
 function moveDude()
 {
         demoTween = game.add.tween(dude).to(
@@ -214,6 +222,7 @@ function create() {
 }
 
 
+
 WebFontConfig = {
 
     
@@ -236,9 +245,11 @@ function preload() {
 
      game.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 }
+
 function update() {
   if(dude.body.x<0) {
       dude.body.x=game.world.width;
+      resetText();
   }
  
   xx=dude.x;
