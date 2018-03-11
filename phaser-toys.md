@@ -138,8 +138,120 @@ function update() {
 }
 ```
 
+## Sprite+Text easing
+```javascript
+
+function addText() {
+    text = game.add.text(game.world.centerX, game.world.centerY, "- phaser -");
+    text.anchor.setTo(0.5);
+
+    text.font = 'Revalia';
+    text.fontSize = 60;
+
+    //  x0, y0 - x1, y1
+    grd = text.context.createLinearGradient(0, 0, 0, text.canvas.height);
+    grd.addColorStop(0, '#8ED6FF');   
+    grd.addColorStop(1, '#004CB3');
+    text.fill = grd;
+
+    text.align = 'center';
+    text.stroke = '#000000';
+    text.strokeThickness = 2;
+    text.setShadow(5, 5, 'rgba(0,0,0,0.5)', 5);
+}
+
+
+function moveText(x,y) {
+    text.x = x;
+    text.y = y;
+}
+
+function setupText() {
+    text = game.add.text(game.world.width, game.world.height, "- phaser -");
+    text.anchor.setTo(0.5);
+
+    text.font = 'Revalia';
+    text.fontSize = 60;
+
+    //  x0, y0 - x1, y1
+    grd = text.context.createLinearGradient(0, 0, 0, text.canvas.height);
+    grd.addColorStop(0, '#8ED6FF');   
+    grd.addColorStop(1, '#004CB3');
+    text.fill = grd;
+
+}
+
+function resetDude() {
+    dude.body.x=game.world.width;
+    dude.body.y=game.world.centerY-150;
+}
+function moveDude()
+{
+        demoTween = game.add.tween(dude).to(
+        {x:game.world.centerX,y:game.world.centerY-150}, 500, 
+        Phaser.Easing.Exponential.InOut);
+    demoTween.start();
+}
+function moveDude2()
+{
+    demoTween2 = game.add.tween(dude).to(
+        {x:0-30,y:game.world.centerY-150}, 500, 
+        Phaser.Easing.Exponential.InOut);
+    demoTween2.start();
+    
+    
+}
+
+function create() {
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+    dude = game.add.sprite(game.world.width, game.world.centerY-150, 'dude');
+    game.physics.arcade.enable(dude);
+
+    game.input.onDown.add(moveDude,game);
+    game.input.onUp.add(moveDude2,game);
+    setupText();
+    //addText();
+}
+
+
+WebFontConfig = {
+
+    
+    //active: function() { game.time.events.add(Phaser.Timer.SECOND, addText, this); },
+
+    //  The Google Fonts we want to load (specify as many as you like in the array)
+    google: {
+      families: ['Revalia']
+    }
+
+};
+
+function preload() {
+
+    game.load.baseURL = 'https://examples.phaser.io/assets/';
+    game.load.crossOrigin = 'anonymous';
+
+    game.load.image('dude', 'sprites/phaser-dude.png');
+    //  The Google WebFont Loader will look for this object, so create it before loading the script.
+
+     game.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
+}
+function update() {
+  if(dude.body.x<0) {
+      dude.body.x=game.world.width;
+  }
+ 
+  xx=dude.x;
+  yy=dude.y-50;
+  moveText(xx,yy)
+}
+```
+
+
 ##Source / inspired by
 
 https://phaser.io/tutorials/coding-tips-008
+
+https://phaser.io/examples/v2/text/google-webfonts
 
 https://www.youtube.com/watch?v=9b8f5nVOOUo
