@@ -1,6 +1,6 @@
 
 ### Zombie with text
-```
+```javascript
 var StateZombies = (function(game) {
 });
 
@@ -15,9 +15,6 @@ StateZombies.prototype = {
         console.log('ready zombies');
         this.zombies = this.game.add.physicsGroup(Phaser.Physics.ARCADE, this.game.world, 'zombies');
 
-
-
-
         //  Create our Timer
         this.timer = this.game.time.create(false);
 
@@ -27,10 +24,6 @@ StateZombies.prototype = {
         //  Start the timer running - this is important!
         //  It won't start automatically, allowing you to hook it to button events and the like.
         this.timer.start();
-
-
-
-
     },
     updateCounter: function() {
         console.log('tick');
@@ -45,7 +38,6 @@ StateZombies.prototype = {
         var style = { font: "20px Arial", fill: "#72ba3a", wordWrap: true, wordWrapWidth: azombie.width, align: "center", backgroundColor: "#F8C27C" };
         var text = this.game.add.text(0, 0, "brains!", style);
         text.anchor.set(0.5);
-
 
         this.zombie_text.push([azombie,text]);
     },
@@ -102,8 +94,10 @@ function plot(self) {
    This.bmd.clear();
    var x = (1 / self.game.width);
    for(var i=0; i<=1; i+=x) {
-       var px = This.math.linearInterpolation(This.points.x, i);
-       var py = This.math.linearInterpolation(This.points.y,i);
+       //var px = This.math.linearInterpolation(This.points.x, i);
+       //var py = This.math.linearInterpolation(This.points.y,i);
+       var px = This.math.catmullRomInterpolation(This.points.x, i);
+       var py = This.math.catmullRomInterpolation(This.points.y,i);
        This.bmd.rect(px,py,1,1,'rgba(255,255,255,1)');
        path.push({x:px, y:py});
    }
