@@ -17,8 +17,38 @@ azombie.animations.add('walking', ['A.png','B.png','C.png'], 5, true, false);
 azombie.animations.play('walking');
 azombie.body.velocity.setTo(-20,0);
 ```
+
+### animations
+```
+this.game.load.spritesheet("dragon",assets_url+"images/main/dragon.png",120,85,4);
+this.dragon=this.game.add.sprite(0,0,"dragon");
+this.dragon.animations.add('fly',[0,1,2,3], 12, true);
+this.dragon.animations.play('fly');
+```
 ### groups
 ```
+// preload
+this.game.load.spritesheet("candy",assets_url+"images/main/candy.png",52,50,8);
+
+//create
+this.candies = this.game.add.group();
+this.candies.createMultiple(40,"candy");
+this.candies.setAll('checkWorldBounds',true); // candies cant go out of bounds
+this.candies.setAll('outOfBoundsKill',true);
+//setListeners
+this.game.time.events.loop(Phaser.Timer.SECOND*1.2, this.fireCandy, this);
+
+fireCandy: function() {
+        var candy = this.candies.getFirstDead(); // get the first available piece of candy thats not active
+        var yy=this.game.rnd.integerInRange(0, this.game.height-60);
+        var xx=this.game.width-100;
+        var type=this.game.rnd.integerInRange(0, 7); // 8 frames in candies spritesheet
+
+        candy.frame=type;
+        candy.reset(xx,yy); // set position
+        candy.enabled=true; // no longer will be called by getFirstDead
+        candy.body.velocity.x=-200;
+},
 ```
 
 # Text
@@ -116,7 +146,13 @@ updateButtons: function() {
 
 # Sound
 ```
+// preload
+this.game.load.audio("burp",assets_url+"sounds/burp.mp3");
+// create
+this.burp = this.game.add.audio("burp");
+this.burp.play();
 ```
+
 # Game
 ### background
 ```
