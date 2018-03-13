@@ -25,6 +25,14 @@ this.dragon.body.gravity.y=500;
 this.dragon.body.immovable=true;
 ```
 
+### physics - properties
+```
+this.dragon.body.velocity.y=500;  // or this.dragon.body.velocity.setTo(-20,0);
+this.dragon.body.acceleration=0.5;
+this.dragon.alpha = 0.5; // set opacity
+this.dragon.body.immovable=true;
+```
+
 ### collision
 ```
 //update
