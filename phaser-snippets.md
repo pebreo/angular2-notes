@@ -116,6 +116,27 @@ function preload() {
      game.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js');
 }
 
+function setupText() {
+    text = game.add.text(game.world.width, game.world.height, "- phaser -");
+    text.anchor.setTo(0.5);
+
+    text.font = 'Revalia';
+    text.fontSize = 60;
+
+    //  x0, y0 - x1, y1
+    grd = text.context.createLinearGradient(0, 0, 0, text.canvas.height);
+    grd.addColorStop(0, '#8ED6FF');   
+    grd.addColorStop(1, '#004CB3');
+    text.fill = grd;
+
+}
+
+function moveText(x,y) {
+    text.x = x;
+    text.y = y;
+}
+
+
 ```
 ### Text physics
 ```
