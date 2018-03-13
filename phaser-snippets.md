@@ -226,6 +226,25 @@ this.burp.play();
 ```
 game.stage.backgroundColor = '#736357';
 ```
+### Ipad fix
+```
+```
+
+### Landscape
+```
+```
+### Portrait
+```
+```
+
+# Angular communication
+### from Angular to Phaser
+```
+```
+
+### from Phaser to Angular
+```
+```
 
 # Misc
 ### debugging
