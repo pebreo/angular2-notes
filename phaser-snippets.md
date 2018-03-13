@@ -1,11 +1,6 @@
 
 # Sprites
 
-### body
-```
-sprite.body.velocity.x = -20;
-```
-
 ### physics
 ```
 game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -23,7 +18,8 @@ azombie.animations.play('walking');
 azombie.body.velocity.setTo(-20,0);
 ```
 ### groups
-
+```
+```
 
 # Text
 ### vanilla text
@@ -56,14 +52,45 @@ function preload() {
 ### Text physics
 ```
 // create a sprite
+game.physics.startSystem(Phaser.Physics.ARCADE);
+dude = game.add.sprite(game.world.width, game.world.centerY-150, 'dude');
+game.physics.arcade.enable(dude);
+dude.velocity.x = -150;
 
 // create a text
-
+ var style = { font: "20px Arial", fill: "#72ba3a", wordWrap: true, wordWrapWidth: azombie.width, align: "center", backgroundColor: "#F8C27C" };
+ var text = this.game.add.text(0, 0, "brains!", style);
+ text.anchor.set(0.5);
+    
 // move the text when the sprite moves
+update() {
+ text.x = Math.floor(dude.x + dude.width / 2);
+ text.y = Math.floor(dude.y + (dude.height / 2)-25);
+}
 ```
 
 # Input
+### up,down,left,right
+```
+var upKey;
+var downKey;
+var leftKey;
+var rightKey;
+```
+### image input
+```
+//preload
+this.game.load.image("red",assets_url + "images/main/blocks/red.png");
+//create
+var red=this.game.add.image(0,0,"red");
+red.name = "red"
+red.inputEnabled=true;
+red.events.onInputDown.add(this.changeColor, this);
 
+function changeColor(target) {
+console.log(target.name);
+}
+```
 # Sound
 
 # Game
