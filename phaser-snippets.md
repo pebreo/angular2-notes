@@ -257,6 +257,20 @@ updateButtons: function() {
     }
 },
 ```
+### buttons
+```
+// preload
+ this.game.load.spritesheet("buttons",assets_url + "images/ui/buttons.png", 265, 75, 8);
+//create
+this.btnStart=this.game.add.button(this.game.world.centerX,this.game.world.height-150,
+    "buttons",this.startGame,this,7,6,7);
+this.btnStart.anchor.set(0.5, 0.5);
+},
+startGame: function() {
+        console.log('push start');
+        this.game.state.start('StateMain');
+},
+```
 
 # Sound
 ```
