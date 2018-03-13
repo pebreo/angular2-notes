@@ -8,6 +8,25 @@ dude = game.add.sprite(game.world.width, game.world.centerY-150, 'dude');
 game.physics.arcade.enable(dude);
 dude.velocity.x = -150;
 ```
+### collision
+```
+//update
+this.game.physics.arcade.collide(this.dragon, this.candies, null, this.onEat, this);
+onEat: function(dragon, candy) {
+if(this.think.frame==candy.frame) {
+    candy.kill(); // remove candy
+    this.game.score++;
+    this.scoreText.text=this.game.score;
+} else {
+    if(this.game.soundOn==true) {
+        this.burp.play();
+    }
+    candy.kill();
+    this.game.state.start("StateOver");
+}
+},
+```
+
 ### spritesheet
 ```
 this.game.load.atlasJSONHash('sprites',assets_url+'sprites/zombies.png',assets_url+'sprites/zombies.json');
@@ -50,6 +69,25 @@ fireCandy: function() {
         candy.body.velocity.x=-200;
 },
 ```
+### tween - exponential movement
+```
+//create
+game.physics.startSystem(Phaser.Physics.ARCADE);
+dude = game.add.sprite(game.world.width, game.world.centerY-150, 'dude');
+game.physics.arcade.enable(dude);
+game.input.onDown.add(moveDude, this);
+
+function moveDude()
+{
+        demoTween = game.add.tween(dude).to({
+                x:game.world.centerX, 
+                y:game.world.centerY-150}, 
+                500, 
+                Phaser.Easing.Exponential.InOut);
+        demoTween.start();
+}
+```
+
 
 # Text
 ### vanilla text
@@ -100,12 +138,42 @@ update() {
 ```
 
 # Input
+
+### global event
+```
+game.input.onDown.add(moveDude, this);
+
+```
 ### up,down,left,right
 ```
 var upKey;
 var downKey;
 var leftKey;
 var rightKey;
+// create
+upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+downKey = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
+leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+//update
+    if (upKey.isDown)
+    {
+        sprite.y--;
+    }
+    else if (downKey.isDown)
+    {
+        sprite.y++;
+    }
+
+    if (leftKey.isDown)
+    {
+        sprite.x--;
+    }
+    else if (rightKey.isDown)
+    {
+        sprite.x++;
+    }
+
 ```
 ### image input
 ```
@@ -166,3 +234,8 @@ game.stage.backgroundColor = '#736357';
 game.debug.inputInfo(32, 32);
 game.debug.spriteInfo(mysprite, 32, 32);
 ```
+
+## References
+https://gamemechanicexplorer.com/#easing-7
+
+Goto 'help' section on the sandbox:  https://phaser.io/sandbox/edit/2
