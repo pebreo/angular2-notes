@@ -91,7 +91,42 @@ function changeColor(target) {
 console.log(target.name);
 }
 ```
+### sprite input
+```
+// preload
+this.game.load.spritesheet("soundButtons",assets_url+"images/ui/soundButtons.png",44,44,4);
+// create
+this.btnSound=this.game.add.image(70,20,"soundButtons");
+this.btnSound.inputEnabled = true;
+this.btnSound.frame=0;
+// setListeners
+this.btnSound.events.onInputDown.add(this.toggleSound,this);
+    toggleSound: function() {
+        this.game.soundOn = !this.game.soundOn;
+        this.updateButtons();
+    },
+updateButtons: function() {
+    if(this.game.soundOn==true){
+        this.btnSound.frame=0;
+    } else{
+        this.btnSound.frame=1;
+    }
+},
+```
+
 # Sound
-
+```
+```
 # Game
+### background
+```
+game.stage.backgroundColor = '#736357';
+```
 
+# Misc
+### debugging
+```
+// update
+game.debug.inputInfo(32, 32);
+game.debug.spriteInfo(mysprite, 32, 32);
+```
