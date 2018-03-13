@@ -8,6 +8,22 @@ dude = game.add.sprite(game.world.width, game.world.centerY-150, 'dude');
 game.physics.arcade.enable(dude);
 dude.velocity.x = -150;
 ```
+### physics - enable multiple objects
+```
+this.candies = this.game.add.group();
+this.candies.createMultiple(40,"candy");
+this.candies.setAll('checkWorldBounds',true); // candies cant go out of bounds
+this.candies.setAll('outOfBoundsKill',true);
+
+this.dragon=this.game.add.sprite(0,0,"dragon");
+this.dragon.animations.add('fly',[0,1,2,3], 12, true);
+this.dragon.animations.play('fly');
+
+this.game.physics.enable([this.dragon, this.candies],Phaser.Physics.ARCADE);
+this.dragon.body.gravity.y=500;
+this.dragon.body.immovable=true;
+```
+
 ### collision
 ```
 //update
