@@ -271,6 +271,18 @@ startGame: function() {
         this.game.state.start('StateMain');
 },
 ```
+### buttons - cursors
+```
+// create
+cursors = game.input.keyboard.createCursorKeys();
+// update
+if(cursors.left.isDown)
+{
+     if (cursors.up.shiftKey) {
+       console.log('up + shift');
+     } 
+}
+```
 
 # Sound
 ```
