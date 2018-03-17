@@ -1,0 +1,33 @@
+
+{% load staticfiles %}
+{% load static %}
+{% load render_bundle from webpack_loader %}
+
+
+   <!DOCTYPE html>
+   <html lang="">
+   <head>
+       <!-- viewport cannot changed by user -->
+       <meta name="viewport" content="user-scalable=0, initial-scale=1,minimum-scale=1, maximum-scale=1, width=device-width, minimal-ui=1">
+       <title>NAME</title>
+
+       <script>
+            var assets_url = "{% get_static_prefix %}" + "js/NAME/assets/";
+       </script>
+       <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+       <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js'></script>
+       <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js'></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/2.6.2/phaser.min.js"></script>
+       {% render_bundle 'main' 'js' 'NAME' %}
+
+       {% include 'NAME/extra_style.html' %}
+   </head>
+   <body>
+       <div ng-app="app">
+           <div id="angularUiView" align="center" ui-view></div>
+       </div>
+       <div id="wrongWay"></div>
+
+
+   </body>
+   </html>
