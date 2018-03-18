@@ -297,7 +297,48 @@ this.game.load.audio("burp",assets_url+"sounds/burp.mp3");
 this.burp = this.game.add.audio("burp");
 this.burp.play();
 ```
+# Timer / Timing
+### countdown timer
+```javascript
+// create
+ // Create a custom timer
+ timer = this.game.time.create();
 
+ // Create a delayed event 1m and 30s from now
+ // timerEvent = timer.add(Phaser.Timer.MINUTE * 1 + Phaser.Timer.SECOND * 3, this.endTimer, this);
+ timerEvent = timer.add(Phaser.Timer.SECOND * g.current_lesson.timelimit, this.endTimer, this);
+ timer.start();
+
+//endtimer
+endTimer: function() {
+  // Stop the timer when the delayed event triggers
+  console.log('timer stopped');
+  //this.game.state.start('StateLessonMain');
+  timer.stop();
+},
+
+//render
+  render: function() {
+      if (timer.running) {
+            //this.game.debug.text(this.formatTime(Math.round((timerEvent.delay - timer.ms) / 1000)), 2, 14, "#ff0");
+            this.timerText.setText(this.formatTime(Math.round((timerEvent.delay - timer.ms) / 1000)));
+            this.timerText.setText(Math.round((timerEvent.delay - timer.ms) / 1000));
+        }
+        else {
+            //console.log('timer done');
+            //this.game.debug.text("Done!", 2, 14, "#0f0");
+
+
+        }
+  },
+  formatTime: function(s) {
+    // Convert seconds (s) to a nicely formatted and padded time string
+    var minutes = "0" + Math.floor(s / 60);
+    var seconds = "0" + (s - minutes * 60);
+    return minutes.substr(-2) + ":" + seconds.substr(-2);
+}
+ 
+```
 # Game
 ### background
 ```
