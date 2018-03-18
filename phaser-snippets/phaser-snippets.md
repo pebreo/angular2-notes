@@ -120,6 +120,11 @@ function moveDude()
 var style = { font: "20px Arial", fill: "#72ba3a", wordWrap: true, wordWrapWidth: azombie.width, align: "center", backgroundColor: "#F8C27C" };
 var text = this.game.add.text(0, 0, "brains!", style);
 text.anchor.set(0.5);
+
+#or 
+scoreText = this.game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+scoreText.anchor.set(0.5,0.5);
+scoreText.setText('foo');
 ```
 ### google webfont
 ```
