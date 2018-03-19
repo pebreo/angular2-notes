@@ -193,7 +193,6 @@ update() {
 ### global event
 ```
 game.input.onDown.add(moveDude, this);
-
 ```
 ### global click
 ```
@@ -201,11 +200,9 @@ game.input.onDown.add(moveDude, this);
 this.lessonOver=false;
 //update
 if (this.game.input.activePointer.isDown)
-        {
-            if(this.lessonOver==true) {
-                this.nextState();
-            }
-        }
+ {
+     this.game.physics.arcade.moveToPointer(sprite, 400);
+  }
 ```
 
 ### up,down,left,right
