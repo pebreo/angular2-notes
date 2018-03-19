@@ -298,6 +298,12 @@ this.burp = this.game.add.audio("burp");
 this.burp.play();
 ```
 # Timer / Timing
+
+### loop
+```
+this.game.time.events.loop(Phaser.Timer.SECOND*1.2, this.fireCandy, this);
+```
+
 ### countdown timer
 ```javascript
 // create
