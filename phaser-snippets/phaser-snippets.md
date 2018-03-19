@@ -195,6 +195,19 @@ update() {
 game.input.onDown.add(moveDude, this);
 
 ```
+### global click
+```
+//create
+this.lessonOver=false;
+//update
+if (this.game.input.activePointer.isDown)
+        {
+            if(this.lessonOver==true) {
+                this.nextState();
+            }
+        }
+```
+
 ### up,down,left,right
 ```
 var upKey;
