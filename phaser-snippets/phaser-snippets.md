@@ -304,6 +304,11 @@ this.burp.play();
 this.game.time.events.loop(Phaser.Timer.SECOND*1.2, this.fireCandy, this);
 ```
 
+### one time
+```
+this.game.time.events.add(Phaser.Timer.SECOND * 20, this.nextState, this);
+```
+
 ### countdown timer
 ```javascript
 // create
