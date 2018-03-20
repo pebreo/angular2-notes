@@ -32,3 +32,7 @@ myfunc();
 ### Source
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions
+
+https://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/
+
+https://stackoverflow.com/questions/1866084/javascript-function-declaration
