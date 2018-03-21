@@ -31,6 +31,7 @@ myfunc();
 ```javascript
 // constructor
 function Point(x, y) { this.x  = x, this.y = y; }
+
 // the prototype is the class
 Point.prototype = {
     z: 0,
