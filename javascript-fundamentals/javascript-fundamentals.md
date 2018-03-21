@@ -81,7 +81,7 @@ var rect = new Rectangle();
 ```
 ## Classes (ES2015/ES6)
 Note that this syntax is syntatic sugar
-```
+```javascript
 class Rectangle {
   constructor(height, width) {
     this.height = height;
