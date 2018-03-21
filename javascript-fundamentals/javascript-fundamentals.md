@@ -27,7 +27,30 @@ myfunc();
 
 // anonymous functions
 ```
-
+## Classes
+```javascript
+// constructor
+function Point(x, y) { this.x  = x, this.y = y; }
+// the prototype is the class
+Point.prototype = {
+    z: 0,
+    magnitude: function() {
+       return Math.sqrt(this.x*this.x + this.y*this.y + this.z*this.z)
+    }
+};
+```
+is the same as the python code
+```python
+class Point:
+    def __init__(self, x, y):
+        self.x, self.y = x,y
+    z = 0
+    def magnitude(self):
+        return math.sqrt(self.x*self.x + self.y*self.y + self.z*self.z)
+p = Point(3,4)
+assert p.z == 0 
+p.z = 10
+```
 
 ### Source
 
