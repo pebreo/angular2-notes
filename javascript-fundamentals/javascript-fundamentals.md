@@ -52,9 +52,67 @@ assert p.z == 0
 p.z = 10
 ```
 
+## Class inheritance with Object.create()
+```javascript
+// Shape - superclass
+function Shape() {
+  this.x = 0;
+  this.y = 0;
+}
+
+// superclass method
+Shape.prototype.move = function(x, y) {
+  this.x += x;
+  this.y += y;
+  console.info('Shape moved.');
+};
+
+// Rectangle - subclass
+function Rectangle() {
+  Shape.call(this); // call super constructor.
+}
+
+// subclass extends superclass
+Rectangle.prototype = Object.create(Shape.prototype);
+Rectangle.prototype.constructor = Rectangle;
+
+var rect = new Rectangle();
+```
+## Classes (ES2015/ES6)
+Note that this syntax is syntatic sugar
+```
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+  // Getter
+  get area() {
+    return this.calcArea();
+  }
+  // Method
+  calcArea() {
+    return this.height * this.width;
+  }
+}
+
+const square = new Rectangle(10, 10);
+
+console.log(square.area); // 100
+```
+
+
+
+
 ### Source
 
+
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
 
 https://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/
 
