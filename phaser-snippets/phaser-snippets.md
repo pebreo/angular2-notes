@@ -112,7 +112,24 @@ function moveDude()
         demoTween.start();
 }
 ```
+# Polygons
+### simple polygon with physics
+```
+// create
+   var graphics = game.add.graphics(0, 0);
+   graphics.beginFill(0xFFFFFF);
+   graphics.name='illinois';
+   graphics.drawPolygon([ 0,0 , 40,0 , 40,40 , 0,40 ]);
+   graphics2.alpha=10; 
+   graphics.inputEnabled = true;
+   graphics.input.useHandCursor = true;
+   graphics.events.onInputUp.add(onClick, this);
 
+// onClick
+function onClick(target, pointer) {
+    console.log(target.name);
+}
+```
 
 # Text
 ### vanilla text
