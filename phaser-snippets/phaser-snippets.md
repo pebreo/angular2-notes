@@ -2,6 +2,14 @@
 
 # Sprites
 
+### basic/common properties
+```
+mysprite.visible = true;
+mysprite.alpha = 90;
+mysprite.body.velocity.x = -20;
+mysprite.body.acceleration.velocity.y = 5;
+```
+
 ### physics
 ```
 game.physics.startSystem(Phaser.Physics.ARCADE);
