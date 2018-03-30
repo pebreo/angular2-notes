@@ -1,5 +1,9 @@
 #### move this to a separate directory 
-
+# Random
+```
+var angs = [0,13,50];
+randomAngle = this.game.rnd.pick(angs);
+```
 # Sprites
 
 ### basic/common properties
