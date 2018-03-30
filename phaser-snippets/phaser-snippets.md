@@ -3,6 +3,9 @@
 ```
 var angs = [0,13,50];
 randomAngle = this.game.rnd.pick(angs);
+
+this.game.rnd.integerInRange(0,10);
+this.game.rnd.integerInRange(0,this.game.world.width);
 ```
 # Sprites
 
