@@ -107,7 +107,9 @@ console.log(square.area); // 100
 
 ### Source
 
+https://www.youtube.com/watch?v=Jakoi0G8lBg
 
+https://www.youtube.com/watch?v=MY0UBGX2FtA&t=198s
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions
 
