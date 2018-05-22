@@ -102,6 +102,38 @@ const square = new Rectangle(10, 10);
 console.log(square.area); // 100
 ```
 
+### Get JSON from API
+```javascript
+function fetchJSON(callback) {
+    fetch('https://stg.cursodegit.com/api/values')
+       .then(response => response.json())
+       .then(json => callback(null, json.data))
+       .catch(error => callback(error, null));
+}
+
+fetchJSON((error, data) => {
+    if (error) 
+        console.log(error)
+    else 
+        console.log(data)
+
+});
+
+```
+
+### Post JSON
+```javascript
+var data = {
+  Name: "TestTomato",
+  Origin: "3095",
+  Tastes: "2"
+};
+var request = new XMLHttpRequest();
+var url = 'http://localhost:5000/api/Tomatos'
+request.open('POST', url, true);
+request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+request.send(JSON.stringify(data));
+```
 
 
 
